@@ -22,7 +22,7 @@ def index(request):
             form = MessageForm(request.POST)
             if form.is_valid():
                 form.save()
-                return HttpResponseRedirect('/index/')
+                return HttpResponseRedirect('/')
         else:
             context = {}
             context['form'] = MessageForm()
