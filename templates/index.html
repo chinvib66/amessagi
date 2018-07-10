@@ -5,7 +5,7 @@
     <div class="container messagebox" >
         <br>
         {% if msg is None %}
-        <form class="container" action="" method="post">{% csrf_token %}
+        <form class="container" action="{% url 'msgs:index' %}" method="post">{% csrf_token %}
         {{form.as_p}}
         <p>
             <button type="submit" class="btn-primary btn-large">Send Message</button>
