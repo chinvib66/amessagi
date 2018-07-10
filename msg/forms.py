@@ -12,5 +12,4 @@ class MessageForm(forms.ModelForm):
         }
         help_texts = {
             'message': _("Please refrain from using any kind of abusive language"),
-            
         }
