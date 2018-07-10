@@ -24,20 +24,13 @@
             "index": "pypi",
             "version": "==2.0.7"
         },
-        "djangoajax": {
+        "gunicorn": {
             "hashes": [
-                "sha256:a2c5039d2f47273cc77d0a84292ae32bb556d02dbc6e8159a6547ccae7615025"
+                "sha256:aa8e0b40b4157b36a5df5e599f45c9c76d6af43845ba3b3b0efe2c70473c2471",
+                "sha256:fa2662097c66f920f53f70621c6c58ca4a3c4d3434205e608e121b5b3b71f4f3"
             ],
             "index": "pypi",
-            "version": "==3.0.2"
-        },
-        "djangorestframework": {
-            "hashes": [
-                "sha256:b6714c3e4b0f8d524f193c91ecf5f5450092c2145439ac2769711f7eba89a9d9",
-                "sha256:c375e4f95a3a64fccac412e36fb42ba36881e52313ec021ef410b40f67cddca4"
-            ],
-            "index": "pypi",
-            "version": "==3.8.2"
+            "version": "==19.9.0"
         },
         "pytz": {
             "hashes": [

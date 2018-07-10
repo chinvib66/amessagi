@@ -5,8 +5,7 @@ name = "pypi"
 
 [packages]
 django = "*"
-djangoajax = "*"
-djangorestframework = "*"
+gunicorn = "*"
 
 [dev-packages]
 
