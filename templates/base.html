@@ -53,14 +53,18 @@
     {% block body %}
     {% endblock %}
     <br><br><br>
-    <footer style="height: 90px;" class="z-depth-1"><br>
-        <div class="container">
+    <footer style="height: 90px;" class="z-depth-1 row"><br>
+        <div class="container col s6 m6 l6 xl6">
             Copyright CVV
             <br>
             {% if amuser.user is None %}
             <a href="{% url 'users:login' %}">Login</a>
             <a href="{% url 'users:register' %}">Register</a>
             {% endif %}
+        </div>
+        <div class="col s6 m6 l6 xl6 container">
+            a_Messagi is an Anonymous Messaging Platform built by me just to test my skills. <br>
+            Thank you for visiting this site
         </div>
     </footer>
 </body>
