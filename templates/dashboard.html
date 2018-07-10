@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Welcome {{user.first_name}}{% endblock %}
+{% block body %}
+<script>new ClipboardJS('.btn');</script>
+<div class="container z-depth-1 basic info">
+    <div class="name"><h4 class="name">Hello {{amuser.user.username}}</h4></div>
+    <div class="address">
+        <h5>Your a_Messagi Address is <i class="address" value="{{amuser.am_add}}" >{{ amuser.am_add }}</i>.</h5>
+        <input class="hidden" type="hidden" value="Hello! You can send me a_Messagi on the address {{amuser.am_add}}. To send the message, visit 'http://a_messagi.herokuapp.com/' ">
+        <button class="btn" data-clipboard-target="i.address">
+                Copy Address to clipboard
+        </button> 
+    </div>
+</div><br><br><br>
+<div class="container dashboard">
+    <div class="container-fluid messages">
+        {% for msg in messages %}
+        <div class="container individual message z-depth-1">
+            <p id="{{ msg.id }}" class='black-text title' style="text-align: center;"> {{ msg.title }} <a class="btn-floating btn-small waves-effect waves-light teal" onclick="$('.msg{{msg.id}}').toggle();"><i class="material-icons">add</i></a></p>
+            <p class="msg{{msg.id}}" style="display: none;">{{ msg.message }}</p>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+{% endblock %}

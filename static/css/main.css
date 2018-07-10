@@ -1,0 +1,32 @@
+.login.template{
+    max-width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+}
+div.title, .container.basic.info{
+    height: 57px;
+    text-align: center;
+}
+.register.link.template{
+    max-width: 300px;
+    border-radius: 10px;
+    padding: 20px;
+}
+textarea#id_message, .container.basic.info{
+    height: 180px !important;
+}
+form.container{
+    max-width: 360px;
+}
+p.title{
+    font-size: 30px;
+    margin-top: 5px !important ;
+}
+.individual.message, .container.basic.info{
+    
+    padding: 15px !important;
+    
+}
+h4.name{
+    margin-top: 5px;
+}

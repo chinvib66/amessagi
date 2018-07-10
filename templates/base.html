@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'css/main.css' %}" />
+    <script src="{% static 'js/main.js'%}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+</head>
+<body>
+    <header>
+        
+        <nav class="teal lighten-3">
+            <div class="nav-wrapper container ">
+                <a href="/index/" class="brand-logo">a_Messagi</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    {% if amuser.user is not None %}
+                    <li><a href="{% url 'users:dashboard' %}">{{amuser.user.username}}</a></li>
+                    <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'users:login' %}">Login</a></li>
+                    <li><a href="{% url 'users:register' %}">Register</a></li>
+                    {% endif %}
+                </ul>
+                
+            </div>
+        </nav>
+        <ul class="sidenav" id="mobile-demo">
+                {% if amuser.user is not None %}
+                <li><a href="{% url 'users:dashboard' %}"></a>{{amuser.user.username}}</a></li>
+                <li><a href="{% url 'users:logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'users:login' %}">Login</a></li>
+                <li><a href="{% url 'users:register' %}">Register</a></li>
+                {% endif %}
+        </ul>
+        <script>
+        
+            $(document).ready(function(){
+            $('.sidenav').sidenav();
+            });
+            </script>
+    </header>
+    <br>
+    {% block body %}
+    {% endblock %}
+    <br><br><br>
+    <footer style="height: 90px;" class="z-depth-1">
+        <div class="container">
+            Copyright CVV
+            <br>
+            {% if amuser.user is None %}
+            <a href="{% url 'users:login' %}">Login</a>
+            <a href="{% url 'users:register' %}">Register</a>
+            {% endif %}
+        </div>
+    </footer>
+</body>
+</html>

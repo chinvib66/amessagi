@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<br>
+<div class="row" style="text-align: center;">
+    <div class="col m1 l2 xl2"></div>
+    <div class="login template  col m6 l3 xl3"><br>
+        <div class="title"><h3>Login</h3></div>
+        <div class="form">
+            <form action="/user/auth/" method="post">{% csrf_token %}
+            <p class="input-field">
+                <input id="username" name="username" type="text" class="validate">
+                <label for="username">Username</label>
+            </p>
+            <p class="input-field">
+                <input id="password" name="password" type="password" class="validate">
+                <label for="password">Password</label>
+            </p>
+            <p class="input-field">
+            <a href="/users/auth/"><button type="submit" name="submit" class="btn-large">Login</button></a>
+            </p>
+            </form>
+        </div>
+    </div>
+    <div class="col m1 l2 xl2"></div>
+    <div class="register link template col m4 l3 xl3">
+        <h2>Register Here</h2><br>
+        <div class="disclamier">By clicking Register, you accept out T&C and our Privacy Policy</div><br>
+        <div class="button">
+            <a href="/user/register/"><button class="btn-large teal lighten-3 reg">Register</button></a>
+        </div>
+    </div>
+    <div class="col m1 l2 xl2"></div>
+
+</div>
+{% endblock %}
