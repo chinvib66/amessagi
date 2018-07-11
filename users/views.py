@@ -17,7 +17,7 @@ def register(request):
             user = form.cleaned_data
             amuser = a_M_user()
             first_name = user['first_name']
-            last_name = user['first_name']
+            last_name = user['last_name']
             username = user['username']
             password = user['password']
             email = user['email']
