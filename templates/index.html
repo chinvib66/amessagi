@@ -4,7 +4,8 @@
 
     <div class="container messagebox" >
         <br>
-        {% if msg is None %}
+        {% if st is None %}
+        {{msg}}
         <form class="container" action="{% url 'msg:index' %}" method="post">{% csrf_token %}
         {{form.as_p}}
         <p>
@@ -12,7 +13,7 @@
         </p>
         </form>
         {% else %}
-        {{msg}}
+        {{st}}
         {% endif %}
     </div>
 {% endblock %}
