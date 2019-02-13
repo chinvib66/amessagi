@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -82,17 +82,17 @@ WSGI_APPLICATION = 'a_messagi.wsgi.application'
 #        'NAME': os.path.join(BASE_DIR, 'db_anonym.sqlite3'),
 #    }
 #}
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DATABASE_NAME', ''),
-        'USER': os.environ.get('DATABASE_USER', ''),
-        'PASSWORD': os.environ.get('DATABASE_PASSWORD', ''),
-        'HOST': os.environ.get('DATABASE_HOST', ''),
-        'PORT': os.environ.get('DATABASE_PORT', ''),
-    }
-}
+#
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': os.environ.get('DATABASE_NAME', ''),
+#        'USER': os.environ.get('DATABASE_USER', ''),
+#        'PASSWORD': os.environ.get('DATABASE_PASSWORD', ''),
+#        'HOST': os.environ.get('DATABASE_HOST', ''),
+#        'PORT': os.environ.get('DATABASE_PORT', ''),
+#    }
+#}
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
@@ -135,3 +135,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 #STATICFILES_DIRS = [
 #    (os.path.join(BASE_DIR, 'static'))
 #]
+
+
+django_heroku.settings(locals())
