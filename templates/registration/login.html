@@ -7,8 +7,11 @@
     <div class="col m1 l2 xl2"></div>
     <div class="login template  col m6 l3 xl3"><br>
         <div class="title"><h3>Login</h3></div>
+        
         <div class="form">
-            <form method="post">{% csrf_token %}
+            <p>{{error}}</p>
+            <form method="post">
+            {% csrf_token %}
             <p class="input-field">
                 <input id="username" name="username" type="text" class="validate">
                 <label for="username">Username</label>
