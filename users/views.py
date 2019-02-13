@@ -55,13 +55,12 @@ def register(request):
                 user = User.objects.get(username = username)
                 if user:
                     error ='Looks like that username already exists'
-                    context = {}
-                    context['error'] = error
-                    context.update(csrf(request))
-                    context['form'] = UserRegForm()
-                    return render_to_response('register.html', context)
-                else:
-                    pass
+                context = {}
+                context['error'] = error
+                context.update(csrf(request))
+                context['form'] = UserRegForm()
+                return render_to_response('register.html', context)
+                
             except:
                 if not error:    
                     user = User.objects.create_user(username,email, password)
