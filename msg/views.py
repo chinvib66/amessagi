@@ -22,11 +22,12 @@ def index(request):
     else:
         if request.method == 'POST':
             form = MessageForm(request.POST)
-            if a_M_user.objects.filter(am_add = form['rec_add']).exists():
-                form.save()
-                context['msg']= "Message Sent"
-            else:
-                context['msg']= "Invalid Address. Please Enter correct address."
+            try:
+                if a_M_user.objects.get(am_add = form['rec_add']).exists():
+                    form.save()
+                    context['msg']= "Message Sent"
+            except:
+                    context['msg']= "Invalid Address. Please Enter correct address."
         else:
             pass
         context['form'] = MessageForm()
