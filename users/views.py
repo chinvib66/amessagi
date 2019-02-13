@@ -14,20 +14,22 @@ def loginU(request):
         username = request.POST['username']
         password = request.POST['password']
         
-        user = User.objects.get(username=username)
-        if not user.check_password(password):
+        try:
+            user = User.objects.get(username=username)
+            if not user.check_password(password):
+                context = {
+                    'error': 'Passwords do not match',  # Incorrect Password
+                }
+                return render(request, 'registration/login.html', context)
+            login(request, user)
+            amuser = a_M_user.objects.get(user=user)
+            request.session['amuser'] = amuser.id
+            return redirect('users:dashboard')
+        except Exception as e:
             context = {
-                'error': 'Passwords do not match',  # Incorrect Password
+                'error': 'Username not found',  # Username does not exist
             }
             return render(request, 'registration/login.html', context)
-        login(request, user)
-        amuser = a_M_user.objects.get(user=user)
-        request.session['amuser'] = amuser.id
-        return redirect('users:dashboard')
-        context = {
-            'error': 'Username not found',  # Username does not exist
-        }
-        return render(request, 'registration/login.html', context)
     else:
         return render(request,'registration/login.html')
 
