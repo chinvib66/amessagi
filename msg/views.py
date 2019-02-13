@@ -23,7 +23,8 @@ def index(request):
         if request.method == 'POST':
             form = MessageForm(request.POST)
             try:
-                if a_M_user.objects.get(am_add = form['rec_add']).exists():
+                amuser =  a_M_user.objects.get(am_add = form['rec_add']):
+                if amuser:
                     form.save()
                     context['msg']= "Message Sent"
             except:
