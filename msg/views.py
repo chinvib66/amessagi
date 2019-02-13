@@ -24,7 +24,7 @@ def index(request):
             form = MessageForm(request.POST)
             if a_M_user.objects.filter(am_add = form['rec_add']).exists():
                 form.save()
-                context['msg']= "Invalid Address. Please Enter correct address."
+                context['msg']= "Message Sent"
             else:
                 context['msg']= "Invalid Address. Please Enter correct address."
         else:
