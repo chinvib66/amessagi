@@ -23,7 +23,7 @@ def index(request):
         if request.method == 'POST':
             form = MessageForm(request.POST)
             try:
-                amuser =  a_M_user.objects.get(am_add = form['rec_add'])
+                amuser =  a_M_user.objects.get(am_add = request.POST['rec_add'])
                 if amuser:
                     form.save()
                     context['msg']= "Message Sent"
