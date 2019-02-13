@@ -39,6 +39,7 @@ def logoutU(request):
 
 
 def register(request):
+    error = None
     if request.method == 'POST':
         form = UserRegForm(request.POST)
         
@@ -50,17 +51,27 @@ def register(request):
             username = user['username']
             password = user['password']
             email = user['email']
-            if (User.objects.filter(username=username).exists()):
-                raise forms.ValidationError('Looks like that username already exists')
-            else:
-                user = User.objects.create_user(username,email, password)
-                user.first_name = first_name
-                user.last_name = last_name
-                user.save()
-                amuser.user = user
-                amuser.am_add = username + '@amessagi.am'
-                amuser.save()
-                return HttpResponseRedirect('/user/login')
+            try:
+                user = User.objects.get(username = username)
+                if user:
+                    error ='Looks like that username already exists'
+                    context = {}
+                    context['error'] = error
+                    context.update(csrf(request))
+                    context['form'] = UserRegForm()
+                    return render_to_response('register.html', context)
+                else:
+                    pass
+            except:
+                if not error:    
+                    user = User.objects.create_user(username,email, password)
+                    user.first_name = first_name
+                    user.last_name = last_name
+                    user.save()
+                    amuser.user = user
+                    amuser.am_add = username + '@amessagi.am'
+                    amuser.save()
+                    return HttpResponseRedirect('/user/login')
             
     else:
         context = {}

@@ -2,7 +2,9 @@
 {% block title %}Register New User{% endblock %}
 {% block body %}
     <div class="form container register">
+
         <form action="" class="container" method="post">{% csrf_token %}
+            <p>{{error}}</p>
             {{ form.as_p }}
             <p class="input-field">
                 <button type="submit" class="btn-large">Register</button>
